@@ -1,28 +1,28 @@
 export const itemsFetching = () => {
   return {
-      type: 'ITEMS_FETCHING'
+    type: 'ITEMS_FETCHING'
   }
 }
 export const itemsFetched = (items) => {
   
   return {
-      type: 'ITEMS_FETCHED',
-        payload: items
-    }
+    type: 'ITEMS_FETCHED',
+    payload: items
+  }
 }
 export const itemsFetchingError = () => {
   return {
-      type: 'ITEMS_FETCHING_ERROR'
+    type: 'ITEMS_FETCHING_ERROR'
   }
 }
 export const showPopup = () => {
   return {
-      type: 'SHOW_POPUP'
+    type: 'SHOW_POPUP'
   }
 }
 export const closePopup = () => {
   return {
-      type: 'CLOSE_POPUP'
+    type: 'CLOSE_POPUP'
   }
 }
 export const setActiveItem = (item) => {
