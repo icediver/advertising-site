@@ -1,0 +1,132 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "category": "estate",
+            "estate-type": "house",
+            "min-square": 200,
+            "rooms": 4, 
+            "title": "Загородный дом с видом на озеро",
+            "mainPic": "assets/img/item1.jpg",
+            "srcSet": "assets/img/item1-2x.jpg 2x",
+            "galery": [
+                "item1.jpg",
+                "item1-2x.jpg"
+            ],
+            "price": "3000000",
+            "description": "",
+            "address": "Приозёрск, улица Прибрежная",
+            "date": "2 часа назад"
+        },
+        {
+            "id": 2,
+            "category": "cars",
+            "transmission": "mechanic",
+            "car-body": "cupe",
+            "title": "Ford Mustang 2020",
+            "mainPic": "assets/img/item2.jpg",
+            "srcSet": "assets/img/item2-2x.jpg 2x",
+            "galery": [                 
+                "car1-2x.jpg",
+                "car2-2x.jpg",
+                "car3-2x.jpg",
+                "car4-2x.jpg",
+                "car5-2x.jpg"
+            ],
+            "year": "2020",
+            "seller": "Автосалон Pony Car",
+            "price": "2950000",
+            "description": "Форд Мустанг 2020 года выпуска, один владелец, пробег 1 км, объём двигателя 5,8 литра, 662 л.с., максимальная скорость — 320 км/ч. Причина продажи — страшно ездить.",
+            "address": "Москва, Нахимовский проспект",
+            "date": "3 дня назад"
+        },
+        {
+            "id": 3,
+            "category": "camera",
+            "camera-type": "mirror",
+            "resolution-matrix": "10",
+            "resolution-video": "4",
+            "title": "Фотокамера Canon EOS 5D + объектив",
+            "mainPic": "assets/img/item3.jpg",
+            "srcSet": "assets/img/item3-2x.jpg 2x",
+            "galery": [
+                "item3.jpg",
+                "item3-2x.jpg 2x"
+            ],
+            "price": "19000",
+            "description": "Фотокамера Canon EOS 5D + объектив",
+            "address": "Киров, улица Ленина",
+            "date": "1 день назад"
+        },
+        {
+            "id": 4,
+            "category": "estate",
+            "estate-type": "flat",
+            "min-square": 50,
+            "rooms": 1, 
+            "title": "1-комнатная квартира в центре Питера",
+            "mainPic": "assets/img/item4.jpg",
+            "srcSet": "assets/img/item4-2x.jpg 2x",
+            "galery": [
+                "item4.jpg",
+                "item4-2x.jpg 2x"
+            ],
+            "price": "5750000",
+            "description": "1-комнатная квартира в центре Питера, на Невском проспекте",
+            "address": "Санкт-Петербург, Невский проспект",
+            "date": "5 часов назад"
+        },
+        {
+            "id": 5,
+            "category": "laptops",
+            "laptop-type": "ultra",
+            "diagonal": "14",
+            "processor": "i3",
+            "ram": 4,
+            "title": "Ультрабук HP Spectre X360 2019",
+            "mainPic": "assets/img/item5.jpg",
+            "srcSet": "assets/img/item5-2x.jpg 2x",
+            "galery": [
+                "item5.jpg",
+                "item5-2x.jpg 2x"
+            ],
+            "price": "41000",
+            "description": "",
+            "address": "Пермь, проспект Просвещения",
+            "date": "7 января"
+        },
+        {
+            "id": 6,
+            "category": "cars",
+            "transmission": "mechanic",
+            "car-body": "sedan",
+            "title": "ВАЗ 2101 на ходу, без документов",
+            "mainPic": "assets/img/item6.jpg",
+            "srcSet": "assets/img/item6-2x.jpg 2x",
+            "galery": [
+                "item6.jpg",
+                "item6-2x.jpg 2x",
+                "vaz03.jpg",
+                "vaz04.jpg",
+                "vaz05.jpg",
+                "vaz06.jpg"
+            ],
+            "price": "5000",
+            "year": "1976",
+            "description": "",
+            "address": "Омск, улица Уездная",
+            "date": "30 декабря 2019 года"
+        }
+        
+        
+        
+    ],
+    "filters": [
+        "all",
+        "estate",
+        "cars",
+        "laptops",
+        "camera"
+        
+    ]
+}

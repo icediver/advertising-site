@@ -1,0 +1,74 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "title": "Загородный дом с видом на озеро",
+            "mainPic": "img/item1.jpg",
+            "srcSet": "img/item1-2x.jpg 2x",
+            "price": "3 000 000 ₽",
+            "description": "",
+            "adress": "Приозёрск, улица Прибрежная",
+            "date": "2 часа назад"
+        },
+        {
+            "id": 2,
+            "title": "Ford Mustang 2020",
+            "mainPic": "img/item2.jpg",
+            "srcSet": "img/item2-2x.jpg 2x",
+            "price": "2 950 000 ₽",
+            "description": "",
+            "adress": "Москва, Нахимовский проспект",
+            "date": "3 дня назад"
+        },
+        {
+            "id": 3,
+            "title": "Фотокамера Canon EOS 5D + объектив",
+            "mainPic": "img/item3.jpg",
+            "srcSet": "img/item3-2x.jpg 2x",
+            "price": "19 000 ₽",
+            "description": "",
+            "adress": "Киров, улица Ленина",
+            "date": "1 день назад"
+        },
+        {
+            "id": 4,
+            "title": "1-комнатная квартира в центре Питера",
+            "mainPic": "img/item4.jpg",
+            "srcSet": "img/item4-2x.jpg 2x",
+            "price": "5 750 000 ₽",
+            "description": "",
+            "adress": "Санкт-Петербург, Невский проспект",
+            "date": "5 часов назад"
+        },
+        {
+            "id": 5,
+            "title": "Ультрабук HP Spectre X360 2019",
+            "mainPic": "img/item5.jpg",
+            "srcSet": "img/item5-2x.jpg 2x",
+            "price": "41 000 ₽",
+            "description": "",
+            "adress": "Пермь, проспект Просвещения",
+            "date": "7 января"
+        },
+        {
+            "id": 6,
+            "title": "ВАЗ 2101 на ходу, без документов",
+            "mainPic": "img/item6.jpg",
+            "srcSet": "img/item6-2x.jpg 2x",
+            "price": "5 000 ₽ ₽",
+            "description": "",
+            "adress": "Омск, улица Уездная",
+            "date": "30 декабря 2019 года"
+        }
+        
+        
+        
+    ],
+    "filters": [
+        "all",
+        "fire",
+        "water",
+        "wind",
+        "earth"
+    ]
+}
