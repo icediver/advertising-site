@@ -1,18 +1,18 @@
-export const itemsFetching = () => {
+export const productsFetching = () => {
   return {
-    type: 'ITEMS_FETCHING'
+    type: 'PRODUCTS_FETCHING'
   }
 }
-export const itemsFetched = (items) => {
+export const productsFetched = (items) => {
   
   return {
-    type: 'ITEMS_FETCHED',
+    type: 'PRODUCTS_FETCHED',
     payload: items
   }
 }
-export const itemsFetchingError = () => {
+export const productsFetchingError = () => {
   return {
-    type: 'ITEMS_FETCHING_ERROR'
+    type: 'PRODUCTS_FETCHING_ERROR'
   }
 }
 export const showPopup = () => {
@@ -32,6 +32,7 @@ export const setActiveItem = (item) => {
   }
 }
 export const activeCategoryChanged = (category) => {
+  // console.log(category);
   return {
     type: 'ACTIVE_CATEGORY_CHANGED',
     payload: category
@@ -43,9 +44,21 @@ export const priceChanged = (range) => {
     payload: range
   }
 }
-export const optionsFliterChanged = (filters) => {
+export const optionsFilterChanged = (filters) => {
   return {
     type: 'OPTION_FILTER_CHANGED',
     payload: filters
+  }
+}
+export const filteredByPrice = (direction) => {
+  return {
+    type: 'FILTERED_BY_PRICE',
+    payload: direction
+  }
+}
+export const getMaxPrice = (products) => {
+  return {
+    type: 'GET_MAX_PRICE',
+    payload: products
   }
 }

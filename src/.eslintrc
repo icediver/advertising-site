@@ -6,9 +6,10 @@
   "rules": {
     "no-console": "warn",
     "prefer-const": "error",
-    "quotes": ["error", "single"],
+    // "quotes": ["error", "single"],
     "jsx-quotes": ["error", "prefer-double"],
-    "indent": ["warn", 2]
+    "indent": ["warn", 2],
+    "react-hooks/exhaustive-deps": "off"
     // "max-len": ["error", {"code": 120}]
     
   }

@@ -1,30 +1,17 @@
-import { useEffect } from 'react';
-import {useHttp } from '../../hooks/http.hook';
 import { useDispatch, useSelector } from 'react-redux';
-import { itemsFetching, itemsFetched, showPopup, setActiveItem } from '../../actions/resultActions';
+import { showPopup, setActiveItem, filteredByPrice, activeCategoryChanged } from '../../actions/resultActions';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Results = () => {
-  const { filteredItems } = useSelector(state => state);
+  const { filteredProducts, activeCategory } = useSelector(state => state);
   const dispatch = useDispatch();
-  const {request} = useHttp();
-  // console.log(items);
-  useEffect(() => {
-    dispatch(itemsFetching());
-    // request("http://localhost:3001/products")
-    // request("https://main-shop-fake-server.herokuapp.com/db")
-    // .then(data => console.log(data))
-    request('http://localhost:3001/items')
-      .then((data => dispatch(itemsFetched(data))))
-      
-    // eslint-disable-next-line
-}, []);
   const showPopUp = (el) => {
-    dispatch(showPopup());    
+
     dispatch(setActiveItem(el));
-    
-    // console.log(el);
+    dispatch(showPopup());
   }
+
   const renderItems = (items) => {
     if (items.length === 0) {
       return (
@@ -33,37 +20,29 @@ const Results = () => {
           
       )
     }
-    
     return items.map(el => {
-      // console.log(el);
+      const id = uuidv4();
       return (
-        <li className="results__item product" key={el.id}  id={el.id}>
+        <li className="results__item product" key={id}  id={id}>
           <button className="product__favourite fav-add" type="button" aria-label="Добавить в избранное">
             <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" clipRule="evenodd" d="M3 7C3 13 10 16.5 11 17C12 16.5 19 13 19 7C19 4.79086 17.2091 3 15 3C12 3 11 5 11 5C11 5 10 3 7 3C4.79086 3 3 4.79086 3 7Z" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
             </svg>
           </button>
-          {/* <div className="product__image">
-              <div className="product__image-more-photo hidden">+2 фото</div>
-              <img src={el.mainPic} srcSet={el.srcSet} width="318" height="220" alt={el.title}/> */}
           <ImageNavigation item={el}/>
-          {/* </div> */}
           <div className="product__content">
             <h3 className="product__title" onClick={()=> showPopUp(el)}>
-              <a href="#">{el.title} </a>
+              <a href="#">{el.name} </a>
             </h3>
-            <div className="product__price">{Number(el.price).toLocaleString()} ₽</div>
-            <div className="product__address">{el.address}</div>
-            <div className="product__date">{el.date}</div>
+            <div className="product__price">{Number(el.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} ₽</div>
+            <div className="product__address">Город: {el.address.city}, {el.address.street}, {el.address.building}</div>
           </div>
         </li>
       )
     });
   }
 
-  const elements = renderItems(filteredItems);
-  // console.log(elements);
-  // console.log(elements);
+  const elements = renderItems(filteredProducts);
   return  (
     <>
       <section className="onlineshop-app__results results">
@@ -75,15 +54,31 @@ const Results = () => {
                 <legend>Показать сначала:</legend>
                 <ul className="sorting__order-list">
                   <li className="sorting__order-tab">
-                    <input className="visually-hidden" type="radio" name="sorting-order" value="popular" id="sort-popular" defaultChecked/>
+                    <input className="visually-hidden" 
+                      type="radio" name="sorting-order" 
+                      value="popular" id="sort-popular" 
+                      defaultChecked
+                      onClick={() => { 
+                        dispatch(filteredByPrice('popular')).
+                          dispatch(activeCategoryChanged(activeCategory));
+
+                      }}/>
                     <label htmlFor="sort-popular">Популярные</label>
                   </li>
                   <li className="sorting__order-tab">
-                    <input className="visually-hidden" type="radio" name="sorting-order" value="cheap" id="sort-cheap"/>
+                    <input className="visually-hidden" 
+                      type="radio" 
+                      name="sorting-order" 
+                      value="cheap" 
+                      id="sort-cheap"
+                      onClick={() => dispatch(filteredByPrice('ascending'))}/>
                     <label htmlFor="sort-cheap">Дешёвые</label>
                   </li>
                   <li className="sorting__order-tab">
-                    <input className="visually-hidden" type="radio" name="sorting-order" value="cheap" id="sort-new"/>
+                    <input className="visually-hidden" 
+                      type="radio" name="sorting-order" 
+                      value="cheap" id="sort-new"
+                      onClick={() => dispatch(filteredByPrice('date'))}/>
                     <label htmlFor="sort-new">Новые</label>
                   </li>
                 </ul>
@@ -114,17 +109,16 @@ const Results = () => {
 }
 
 const ImageNavigation = ({item}) => {
-  const [img, setImg] = useState(item.mainPic) 
+  const [img, setImg] = useState(item.photos[0]) 
   
   const activeImageClass = (e) => {
     const imageBtns = e.target.parentNode.querySelectorAll('.product__navigation-item');
     imageBtns.forEach((el, i) => {
-      el.classList.remove('product__navigation-item--active'); 
-      if (el === e.target) {
-        el.classList.add('product__navigation-item--active');        
-        setImg('assets/img/' + item.galery[i])
-        // console.log(i)
-        // console.log(item.galery);
+      el.classList.remove('product__navigation-item--active');  
+      
+      if (el === e.target  && i < item.photos.length) {
+        el.classList.add('product__navigation-item--active');
+        setImg(item.photos[i]);        
       }
     })
     
@@ -133,7 +127,7 @@ const ImageNavigation = ({item}) => {
   return(
     <div className="product__image">
       <div className="product__image-more-photo hidden">+2 фото</div>
-      <img src={img} srcSet={img} width="318" height="220" alt={item.title}/>
+      <img src={img} srcSet={img} width="318" height="220" alt={item.name}/>
       <div className="product__image-navigation">
     
         <span className={'product__navigation-item product__navigation-item--active'} onClick={e => activeImageClass(e)}></span>

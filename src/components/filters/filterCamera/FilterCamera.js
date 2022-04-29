@@ -5,22 +5,22 @@ const FilterCamera = () => {
         <legend>Тип фотоаппарата</legend>
         <ul className="filter__checkboxes-list filter__checkboxes-list--camera">
           <li className="filter__checkboxes-item">
-            <input className="visually-hidden" type="checkbox" name="camera-type" value="mirror" id="mirror"/>
+            <input className="visually-hidden" type="checkbox" name="type" value="mirror" id="mirror"/>
             <label htmlFor="mirror">Зеркальный</label>
           </li>
           <li className="filter__checkboxes-item">
-            <input className="visually-hidden" type="checkbox" name="camera-type" value="digital" id="digital"/>
+            <input className="visually-hidden" type="checkbox" name="type" value="digital" id="digital"/>
             <label htmlFor="digital">Цифровой</label>
           </li>
           <li className="filter__checkboxes-item">
-            <input className="visually-hidden" type="checkbox" name="camera-type" value="mirrorless" id="mirrorless"/>
+            <input className="visually-hidden" type="checkbox" name="type" value="mirrorless" id="mirrorless"/>
             <label htmlFor="mirrorless">Беззеркальный</label>
           </li>
         </ul>
       </fieldset>
       <div className="filter__select-wrapper filter__select-wrapper--min-resolution">
         <label htmlFor="resolution-matrix">Минимальное разрешение матрицы</label>
-        <select id="resolution-matrix" name="resolution-matrix" onChange={() => {}}>
+        <select id="resolution-matrix" name="matrix-resolution" onChange={() => {}}>
           <option value="1" defaultValue>1 МП</option>
           <option value="3">3 МП</option>
           <option value="5">5 МП</option>
@@ -33,10 +33,10 @@ const FilterCamera = () => {
       </div>
       <div className="filter__select-wrapper">
         <label htmlFor="resolution-video" >Минимальное разрешение видео</label>
-        <select id="resolution-video" name="resolution-video" onChange={() => {}}>
+        <select id="resolution-video" name="supporting" onChange={() => {}}>
           <option value="0" defaultValue>Любое</option>
-          <option value="0.7">HD</option>
-          <option value="1">Full HD</option>
+          <option value="1">HD</option>
+          <option value="2">Full HD</option>
           <option value="4">4K</option>
           <option value="5">5K</option>
         </select>
