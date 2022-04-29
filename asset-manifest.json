@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/advertising-site/static/css/main.581b0bbe.css",
+    "main.js": "/advertising-site/static/js/main.44944dd8.js",
+    "static/media/Montserrat-Regular.woff": "/advertising-site/static/media/Montserrat-Regular.6ae2be56f2279197e0cb.woff",
+    "static/media/Montserrat-Medium.woff": "/advertising-site/static/media/Montserrat-Medium.08fd1bdf818098e232e3.woff",
+    "static/media/Montserrat-SemiBold.woff": "/advertising-site/static/media/Montserrat-SemiBold.cf58fad672f705ae9c2d.woff",
+    "static/media/Montserrat-Regular.woff2": "/advertising-site/static/media/Montserrat-Regular.45f49083ea5b1b5a7eb3.woff2",
+    "static/media/Montserrat-Medium.woff2": "/advertising-site/static/media/Montserrat-Medium.550d4d6d78e0b510428c.woff2",
+    "static/media/Montserrat-SemiBold.woff2": "/advertising-site/static/media/Montserrat-SemiBold.7b771411d90577eadcfd.woff2",
+    "static/media/hand-green.svg": "/advertising-site/static/media/hand-green.ff7295999de6d0df9f8b.svg",
+    "static/media/hand-gray.svg": "/advertising-site/static/media/hand-gray.e684436c470cfceac41e.svg",
+    "static/media/pointer.svg": "/advertising-site/static/media/pointer.62bb1e1abecae64af016.svg",
+    "index.html": "/advertising-site/index.html",
+    "static/media/icon-tick_disabled.svg": "/advertising-site/static/media/icon-tick_disabled.d0d0a5ae64afaf6bae42.svg",
+    "static/media/icon-tick.svg": "/advertising-site/static/media/icon-tick.de26e26e8f6405729981.svg",
+    "main.581b0bbe.css.map": "/advertising-site/static/css/main.581b0bbe.css.map",
+    "main.44944dd8.js.map": "/advertising-site/static/js/main.44944dd8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.581b0bbe.css",
+    "static/js/main.44944dd8.js"
+  ]
+}
