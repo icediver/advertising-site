@@ -80,30 +80,32 @@ const Filters = () => {
     const filterOptions = (filters, element) => {
       //если ни один чекбокс не отмечен идем дальше
       let answer = Object.keys(filters['checkboxes']).length === 0;
-
+      
       for (const type in filters) {
-
+        // console.log('------------------');
+        
         for (const key in filters[type]) {
           if (type === 'checkboxes' && !answer && type !== 'categories') {
-            answer = element.filters[key] === '-' ? true : filters[type][key].includes(element.filters[key]);
-            // console.log(element.filters[key], filters[type][key], answer);
-            // console.log(filters[type][key], element.filters[key]);
+            answer = element.filters[key] === '-' ? true : filters[type][key].includes(element.filters[key][1]);
+            // console.log(filters[type][key][0] , element.name, element.filters[key][1],  element.filters[key][0], key, answer);
           } 
           if (answer && (type === 'select'  || type === 'inputs' || type === 'radio') && key !== 'categories') {
             // (/^[0-9]+$/.test(filters[type][key][0])) ?
             (/^(0|[1-9]\d*)$/.test(filters[type][key][0])) ?
             // (/\d{1,2}[,.]\d{1,2}/.test(filters[type][key][0])) ?
             //если число то --
-              answer = (Number(filters[type][key][0]) <= Number(element.filters[key])) || 
-                  element.filters[key] === '-' :
+              answer = (Number(filters[type][key][0]) <= Number(element.filters[key][1])) || 
+            element.filters[key][1] === '-' :
             //если строка то --
-              answer = filters[type][key][0] === element.filters[key] || filters[type][key][0] === 'any' ;
+              answer = filters[type][key][0] === element.filters[key][1] || filters[type][key][0] === 'any' ;
+            // console.log('filter: ' + filters[type][key][0], 'element: ' + element.filters[key][1],  element.filters[key][0], key,  element.name, answer);
+            
             // !answer ? console.log('filter', Number(filters[type][key][0]), '<=', Number(element.filters[key]), key,  (Number(filters[type][key][0]) <= Number(element.filters[key]))) : console.log('')
             // !answer ? console.log((/\d{1,2}[,.]\d{1,2}/.test(filters[type][key][0]))) : console.log('')
           }
         }
       }
-      // console.log(answer)
+      // console.log(element.name, answer)
       return answer;
     };
     dispatch(activeCategoryChanged(activeCategory));

@@ -1,4 +1,4 @@
-import converterProductsFormat from "./converterProductsFormat";
+// import converterProductsFormat from "./converterProductsFormat";
 const inititialState = {
   products: [],
   popup: false,
@@ -23,7 +23,7 @@ const products = (state = inititialState, action) => {
     const productsFetched = filteredByCategory(state.products, state.activeCategory)
     return {
       ...state,
-      products: converterProductsFormat(action.payload),
+      products: action.payload,
       productsLoadingStatus: 'idle',        
       filteredProducts: [...productsFetched],
       // filteredProductClone: [...filteredByCategory(state.products, state.activeCategory)]
