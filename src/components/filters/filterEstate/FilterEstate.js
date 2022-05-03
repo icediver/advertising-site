@@ -8,7 +8,7 @@ const FilterEstate = () => {
             <input
               className="visually-hidden"
               type="checkbox"
-              name="estate-type"
+              name="type"
               value="house"
               id="house"
             />
@@ -18,7 +18,7 @@ const FilterEstate = () => {
             <input
               className="visually-hidden"
               type="checkbox"
-              name="estate-type"
+              name="type"
               value="flat"
               id="flat"
             />
@@ -28,8 +28,8 @@ const FilterEstate = () => {
             <input
               className="visually-hidden"
               type="checkbox"
-              name="estate-type"
-              value="apartments"
+              name="type"
+              value="apartment"
               id="apartments"
             />
             <label htmlFor="apartments">Апартаменты</label>
@@ -43,7 +43,7 @@ const FilterEstate = () => {
         <input
           type="number"
           id="square"
-          name="min-square"
+          name="area"
           min="1"
           defaultValue="1"
           placeholder="1"
@@ -56,7 +56,7 @@ const FilterEstate = () => {
             <input
               className="visually-hidden"
               type="radio"
-              name="rooms"
+              name="rooms-count"
               value="0"
               id="any_room"
               defaultChecked
@@ -64,27 +64,27 @@ const FilterEstate = () => {
             <label htmlFor="any_room">Любое</label>
           </li>
           <li className="filter__radiobuttons-item">
-            <input className="visually-hidden" type="radio" name="rooms" value="1" id="one" />
+            <input className="visually-hidden" type="radio" name="rooms-count" value="1" id="one" />
             <label htmlFor="one">1</label>
           </li>
           <li className="filter__radiobuttons-item">
-            <input className="visually-hidden" type="radio" name="rooms" value="2" id="two" />
+            <input className="visually-hidden" type="radio" name="rooms-count" value="2" id="two" />
             <label htmlFor="two">2</label>
           </li>
           <li className="filter__radiobuttons-item">
-            <input className="visually-hidden" type="radio" name="rooms" value="3" id="three" />
+            <input className="visually-hidden" type="radio" name="rooms-count" value="3" id="three" />
             <label htmlFor="three">3</label>
           </li>
           <li className="filter__radiobuttons-item">
-            <input className="visually-hidden" type="radio" name="rooms" value="4" id="four" />
+            <input className="visually-hidden" type="radio" name="rooms-count" value="4" id="four" />
             <label htmlFor="four">4</label>
           </li>
           <li className="filter__radiobuttons-item">
             <input
               className="visually-hidden"
               type="radio"
-              name="rooms"
-              value="fivemore"
+              name="rooms-count"
+              value="5"
               id="fivemore"
             />
             <label htmlFor="fivemore">5+</label>
