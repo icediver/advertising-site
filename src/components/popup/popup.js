@@ -57,16 +57,20 @@ const ActivePopup = () => {
         
     )
   }) : null;
+  // console.log(activeItem);
   const options = Object.keys(activeItem.filters).map((key, index) => {
+    // console.log(dictionary['category'][activeItem.category][key]);
+    // console.log(activeItem.filters[key]);
 
     return (        
       <li className="chars__item" key={index}>
         <div className="chars__name">{dictionary['category'][activeItem.category][key]}</div>
-        <div className="chars__value">{activeItem.filters[key]}</div>
+        <div className="chars__value">{activeItem.filters[key][0]}</div>
       </li>
         
     )
   });
+ 
 
   const showPicture = (target) => {
     const currentLi = target.parentNode;

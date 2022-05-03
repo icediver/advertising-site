@@ -8,7 +8,6 @@ const ProductCards = ({element}) => {
     dispatch(setActiveItem(el));
     dispatch(showPopup());
   }
-
   return (
     <>
       <button className="product__favourite fav-add" type="button" aria-label="Добавить в избранное">
@@ -19,7 +18,7 @@ const ProductCards = ({element}) => {
       <ImageNavigation item={element}/>
       <div className="product__content">
         <h3 className="product__title" onClick={()=> showPopUp(element)}>
-          <a href="#">{element.name} </a>
+          <span>{element.name} </span>
         </h3>
         <div className="product__price">{Number(element.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} ₽</div>
         <div className="product__address">Город: {element.address.city}, {element.address.street}, {element.address.building}</div>

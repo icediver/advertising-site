@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import {useHttp } from '../../hooks/http.hook';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsFetching, productsFetched,  getMaxPrice } from '../../actions/resultActions';
+import transformDataFormat from "../../services/transform-data-format";
 
 export const Main = () => {
   const { priceMax } = useSelector(state => state);
@@ -14,9 +15,7 @@ export const Main = () => {
     dispatch(productsFetching());
     // request("http://localhost:3001/products")
     request("https://main-shop-fake-server.herokuapp.com/db")
-      .then(data => {
-        // console.log(data.products, " from useEffect") 
-        return data.products})
+      .then(data => data.products.map(el => transformDataFormat(el)))
     // request('http://localhost:3001/items')
       .then((data => dispatch(productsFetched(data))))
       .then(data => dispatch(getMaxPrice(data.payload)))
