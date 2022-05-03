@@ -2,15 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { showPopup, setActiveItem, filteredByPrice, activeCategoryChanged } from '../../actions/resultActions';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import ProductCards from '../product-card/product-card';
 
 const Results = () => {
   const { filteredProducts, activeCategory } = useSelector(state => state);
   const dispatch = useDispatch();
-  const showPopUp = (el) => {
-
-    dispatch(setActiveItem(el));
-    dispatch(showPopup());
-  }
+  
 
   const renderItems = (items) => {
     if (items.length === 0) {
@@ -24,19 +21,7 @@ const Results = () => {
       const id = uuidv4();
       return (
         <li className="results__item product" key={id}  id={id}>
-          <button className="product__favourite fav-add" type="button" aria-label="Добавить в избранное">
-            <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fillRule="evenodd" clipRule="evenodd" d="M3 7C3 13 10 16.5 11 17C12 16.5 19 13 19 7C19 4.79086 17.2091 3 15 3C12 3 11 5 11 5C11 5 10 3 7 3C4.79086 3 3 4.79086 3 7Z" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          <ImageNavigation item={el}/>
-          <div className="product__content">
-            <h3 className="product__title" onClick={()=> showPopUp(el)}>
-              <a href="#">{el.name} </a>
-            </h3>
-            <div className="product__price">{Number(el.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} ₽</div>
-            <div className="product__address">Город: {el.address.city}, {el.address.street}, {el.address.building}</div>
-          </div>
+          <ProductCards element={el}/>
         </li>
       )
     });
@@ -108,37 +93,6 @@ const Results = () => {
   ) 
 }
 
-const ImageNavigation = ({item}) => {
-  const [img, setImg] = useState(item.photos[0]) 
-  
-  const activeImageClass = (e) => {
-    const imageBtns = e.target.parentNode.querySelectorAll('.product__navigation-item');
-    imageBtns.forEach((el, i) => {
-      el.classList.remove('product__navigation-item--active');  
-      
-      if (el === e.target  && i < item.photos.length) {
-        el.classList.add('product__navigation-item--active');
-        setImg(item.photos[i]);        
-      }
-    })
-    
-  }
-  
-  return(
-    <div className="product__image">
-      <div className="product__image-more-photo hidden">+2 фото</div>
-      <img src={img} srcSet={img} width="318" height="220" alt={item.name}/>
-      <div className="product__image-navigation">
-    
-        <span className={'product__navigation-item product__navigation-item--active'} onClick={e => activeImageClass(e)}></span>
-        <span className={'product__navigation-item '} onClick={e => activeImageClass(e)}></span>
-        <span className={'product__navigation-item '} onClick={e => activeImageClass(e)}></span>
-        <span className={'product__navigation-item '} onClick={e => activeImageClass(e)}></span>
-        <span className={'product__navigation-item '} onClick={e => activeImageClass(e)}></span>
-      </div>
-    </div>
-    
-  )
-}
+
 
 export default Results;
