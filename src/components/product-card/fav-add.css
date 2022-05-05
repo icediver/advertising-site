@@ -37,10 +37,15 @@
   height: 24px;
 }
 
- .fav-add:focus svg {
+ /* .fav-add:focus svg {
   fill: var(--light-blue);
-}
+} */
 
+.fav-added svg {
+  width: 26px;
+  height: 26px;
+  fill: red;
+}
 .fav-add:active svg {
   fill: var(--dark-blue);
   width: 22px;

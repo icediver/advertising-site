@@ -42,6 +42,7 @@ const transformDataFormat = (product) => {
     'publish-date': product['publish-date'],
     category: dictionary[product['category']],
     photos: product.photos,
+    favorite: false
     
   }
   switch (product.category) {

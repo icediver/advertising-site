@@ -7,7 +7,7 @@ const inititialState = {
   filteredByCategory: [],
   filteredProductsClone: [],
   filteredProducts: [],
-  priceMax:  null,
+  priceMax:  30000000,
   activeCategory: 'all'
 }
 const products = (state = inititialState, action) => {
@@ -20,7 +20,8 @@ const products = (state = inititialState, action) => {
       productsLoadingStatus: 'loading'
     }
   case 'PRODUCTS_FETCHED':
-    const productsFetched = filteredByCategory(state.products, state.activeCategory)
+    const productsFetched = filteredByCategory(action.payload, state.activeCategory)
+    
     return {
       ...state,
       products: action.payload,
@@ -51,16 +52,17 @@ const products = (state = inititialState, action) => {
       activeItem: action.payload
     }
   case 'ACTIVE_CATEGORY_CHANGED':
-    const filteredCat = filteredByCategory(state.products, action.payload)
+    const filteredCat = filteredByCategory(state.products, action.payload);
+    const maxPrice = filteredCat.reduce((acc,cur) => cur.price > acc.price ? cur:acc);
+    
     return {
       ...state,
       activeCategory: action.payload,
       productsLoadingStatus: 'idle',        
       filteredProducts: [...filteredCat],
       // filteredProductClone: [...filteredByCategory(state.products, action.payload)]
-      filteredProductsClone: [...filteredCat]
-        
-        
+      filteredProductsClone: [...filteredCat],
+      priceMax: maxPrice.price        
     }
   case 'PRICE_CHANGED':
     const priceChanged = filteredByPrice(
@@ -80,6 +82,15 @@ const products = (state = inititialState, action) => {
       ...state,        
       productsLoadingStatus: 'idle',
       filteredProducts: action.payload
+    }
+  case 'FILTERED_FAVORITE':
+    const products = JSON.parse(localStorage.products);
+    const favorite = products.filter(x => x.favorite === true);
+    const status = action.payload ? favorite : products
+    return {
+      ...state,        
+      productsLoadingStatus: 'idle',
+      filteredProducts: status 
     }
   case 'FILTERED_BY_PRICE':
     const arr = [...state.filteredProductsClone]
@@ -119,7 +130,7 @@ const ascendingSort = products => products.sort(function(a,b){return a.price-b.p
 const dateSort = products => products.sort(function(a,b){return a['publish-date']-b['publish-date']});
 const popular = products => products;
 
-const descendingSort = products => products.sort(function(a,b){return b.price-a.price});
+// const descendingSort = products => products.sort(function(a,b){return b.price-a.price});
 
 
 export default products;
