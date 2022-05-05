@@ -1,23 +1,54 @@
 import './product-card.css';
+import './fav-add.css';
+
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { showPopup, setActiveItem, } from '../../actions/resultActions';
+
+
+
 const ProductCards = ({element}) => {
   const dispatch = useDispatch();
   const showPopUp = (el) => {
     dispatch(setActiveItem(el));
     dispatch(showPopup());
   }
+  const favoriteClass = element.favorite ? 'fav-added' : null
+
   return (
     <>
-      <button className="product__favourite fav-add" type="button" aria-label="Добавить в избранное">
+      <button 
+        className={`product__favourite fav-add ${favoriteClass}`}
+        type="button" aria-label="Добавить в избранное"
+        onClick={e => {
+          e.currentTarget.classList.toggle('fav-added');
+          
+
+          const products = JSON.parse(localStorage.products);
+          // console.log(products, element.id)
+          const el = products.find(x => x.name === element.name);
+          // // const el = products[element.id];
+          el.favorite = !el.favorite;
+
+          localStorage.setItem('products',JSON.stringify(products));
+          // console.log(el.id)
+        } }
+
+      >
         <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" clipRule="evenodd" d="M3 7C3 13 10 16.5 11 17C12 16.5 19 13 19 7C19 4.79086 17.2091 3 15 3C12 3 11 5 11 5C11 5 10 3 7 3C4.79086 3 3 4.79086 3 7Z" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
         </svg>
       </button>
       <ImageNavigation item={element}/>
       <div className="product__content">
-        <h3 className="product__title" onClick={()=> showPopUp(element)}>
+        <h3 
+          className="product__title" 
+          onClick={()=> {
+            const prod = JSON.parse(localStorage.getItem('products'));
+            prod[12].favorite = true;
+            localStorage.setItem('products', JSON.stringify(prod));
+            showPopUp(element);
+          }}>
           <span>{element.name} </span>
         </h3>
         <div className="product__price">{Number(element.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} ₽</div>

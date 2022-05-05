@@ -56,6 +56,13 @@ export const filteredByPrice = (direction) => {
     payload: direction
   }
 }
+export const filteredFavorite = (isChecked) => {
+  return {
+    type: 'FILTERED_FAVORITE',
+    payload: isChecked
+    
+  }
+}
 export const getMaxPrice = (products) => {
   return {
     type: 'GET_MAX_PRICE',
